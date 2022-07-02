@@ -27,19 +27,12 @@ spec:
       containers:
         - args:
             - ./scripts/workers
-          image: judge0/judge0:1.12.0
+          image: 172.1.14.168:5001/judge0-withconf:latest
           name: workers
+          imagePullPolicy: Always
           resources: {}
           securityContext:
             privileged: true
-          volumeMounts:
-            - mountPath: /judge0.conf
-              name: workers-claim0
-              readOnly: true
       restartPolicy: Always
-      volumes:
-        - name: workers-claim0
-          persistentVolumeClaim:
-            claimName: workers-claim0
-            readOnly: true
+
 status: {}

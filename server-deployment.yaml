@@ -25,21 +25,13 @@ spec:
         io.kompose.service: server
     spec:
       containers:
-        - image: judge0/judge0:1.12.0
+        - image: 172.1.14.168:5001/judge0-withconf:latest
           name: server
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources: {}
           securityContext:
             privileged: true
-          volumeMounts:
-            - mountPath: /judge0.conf
-              name: server-claim0
-              readOnly: true
       restartPolicy: Always
-      volumes:
-        - name: server-claim0
-          persistentVolumeClaim:
-            claimName: server-claim0
-            readOnly: true
 status: {}

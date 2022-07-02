@@ -1,13 +1,3 @@
-FROM node:16-alpine
+FROM judge0/judge0:1.13.0
 
-WORKDIR app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-EXPOSE 6000
-
-CMD ["npm", "run", "start-prod"]
+COPY ./judge0.conf /judge0.conf

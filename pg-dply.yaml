@@ -93,8 +93,10 @@ spec:
             - name: STACK_LIMIT
             - name: SUBMISSION_CACHE_DURATION
             - name: WALL_TIME_LIMIT
-          image: postgres:13.0
+          image: postgres
           name: db
+          ports:
+            - containerPort: 5432
           resources: {}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data/
