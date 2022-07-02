@@ -1,0 +1,5 @@
+FROM judge0_builder as judge0_builder
+
+RUN sudo apt install nodejs npm
+
+RUN npm install mongodb

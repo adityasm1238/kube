@@ -1,0 +1,8 @@
+[
+    {
+      "name": "nomongo",
+      "is_archived": false,
+      "source_file": "Main.js",
+      "run_cmd": "node  Main.js"
+    }
+  ]
