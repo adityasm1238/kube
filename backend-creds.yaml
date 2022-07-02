@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  jwt: b3l0WXFmaWQzNllHVnVCbE5IYUNBdDZIZXorRFFpWW51NStvcWlYNStUWT0K
+  mongouri: bW9uZ29kYjovL2FkbWluOmFzc2Vzc21lbnR0b29sQG1vbmdvL2Fzc2Vzc21lbnRUb29sRGI/YXV0aFNvdXJjZT1hZG1pbg==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: backend-creds

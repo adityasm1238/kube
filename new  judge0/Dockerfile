@@ -3,7 +3,9 @@ FROM judge0/judge0:1.13.0 as judge0_builder
 
 
 RUN sudo apt install nodejs npm
-RUN npm install -g mongodb-memory-server mongoose
+RUN npm install -g mongoose
+
+COPY ./judge0.conf /judge0.conf
 
 
 

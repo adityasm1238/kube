@@ -1,33 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.26.0 (40646f47)
-  creationTimestamp: null
   labels:
-    io.kompose.service: workers
+    app: workersapp
   name: workers
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      io.kompose.service: workers
+      app: workersapp
   strategy:
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.26.0 (40646f47)
-      creationTimestamp: null
       labels:
-        io.kompose.service: workers
+        app: workersapp
     spec:
       containers:
         - args:
             - ./scripts/workers
-          image: 172.1.14.168:5001/judge0-withconf:latest
+          image: 172.1.14.168:5001/judge0-withconf:2
           name: workers
           imagePullPolicy: Always
           resources: {}

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: assessment-be
+  name: assessment-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assessment-be
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: assessment-be
+    spec:
+      containers:
+      - image: 172.1.14.168:5001/assessment-backend:1
+        name: assessment-be
+        ports:
+          - containerPort: 5500
+        env:
+        - name: IMAGE_UPLOAD_PATH
+          value: "/uploads"
+        - name: COMPILATION_BACKEND_URL
+          value: "server:2358"
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: backend-creds
+              key: mongouri
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: backend-creds
+              key: jwt
+        volumeMounts:
+        - name: "image-data"
+          mountPath: "/uploads"
+      volumes:
+      - name: "image-data"
+        persistentVolumeClaim:
+          claimName: "image-data"
