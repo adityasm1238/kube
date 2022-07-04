@@ -1,5 +1,6 @@
-node index.js > /dev/null &
+read -a input
+NODE_PATH=/usr/lib/node_modules node index.js > /dev/null &
 serverId=$!
 sleep 5
-curl "$@"
+curl -s "${input[@]}"
 kill $serverId
