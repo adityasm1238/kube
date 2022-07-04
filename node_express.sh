@@ -1,6 +1,9 @@
 read -a input
-NODE_PATH=/usr/lib/node_modules node index.js > /dev/null &
+fileName=$( echo $RANDOM | md5sum | head -c 20; echo;)
+NODE_PATH=/usr/lib/node_modules node index.js > $fileName &
 serverId=$!
 sleep 5
-curl -s "${input[@]}"
+port=$( cat $fileName )
+curl -s $( eval "echo ${input[@]}")
 kill $serverId
+rm $fileName
